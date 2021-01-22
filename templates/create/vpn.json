@@ -1,0 +1,71 @@
+{
+    "msgVpnName":"CHANGEME",
+  	"maxConnectionCount":"CHANGEME",
+  	"serviceSmfMaxConnectionCount":"CHANGEME",
+	"maxEgressFlowCount":"CHANGEME",
+	"maxIngressFlowCount":"CHANGEME",
+    "maxMsgSpoolUsage":"CHANGEME",
+    "maxTransactedSessionCount": "CHANGEME",
+
+  	"maxSubscriptionCount": 10000,
+    "maxTransactionCount": 100,
+    "sempOverMsgBusEnabled": false,
+    "authenticationBasicEnabled":true,
+	"authenticationBasicType":"internal",
+    "authenticationClientCertEnabled":false,
+    "enabled":true,
+    "jndiEnabled":true,
+  	"eventConnectionCountThreshold":{
+                "clearPercent":40,
+                "setPercent":60
+            },
+            "eventEgressFlowCountThreshold":{
+                "clearPercent":40,
+                "setPercent":60
+            },
+            "eventEgressMsgRateThreshold":{
+                "clearValue":3000000,
+                "setValue":4000000
+            },
+            "eventEndpointCountThreshold":{
+                "clearPercent":40,
+                "setPercent":60
+            },
+            "eventIngressFlowCountThreshold":{
+                "clearPercent":40,
+                "setPercent":60
+            },
+            "eventIngressMsgRateThreshold":{
+                "clearValue":3000000,
+                "setValue":4000000
+            },
+	        "eventMsgSpoolUsageThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+            },
+
+	"eventServiceRestIncomingConnectionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        },
+        "eventServiceSmfConnectionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        },
+        "eventServiceWebConnectionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        },
+        "eventSubscriptionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        },
+        "eventTransactedSessionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        },
+        "eventTransactionCountThreshold":{
+            "clearPercent":40,
+            "setPercent":60
+        }
+}

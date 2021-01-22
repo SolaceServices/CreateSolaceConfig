@@ -1,0 +1,7 @@
+{
+	"aclProfileName": "CHANGEME",
+	"msgVpnName":"CHANGEME",
+	"clientConnectDefaultAction":"allow",
+	"publishTopicDefaultAction":"allow",
+	"subscribeTopicDefaultAction":"allow"
+}

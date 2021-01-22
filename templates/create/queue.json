@@ -1,0 +1,17 @@
+{
+    "msgVpnName":"CHANGEME",
+    "queueName":"CHANGEME",
+  	"maxMsgSize": "CHANGEME",
+    "maxMsgSpoolUsage": "CHANGEME",
+  	"maxDeliveredUnackedMsgsPerFlow": "CHANGEME",
+
+    "accessType":"non-exclusive",
+	"maxBindCount": 100,
+	"maxRedeliveryCount": 0,
+    "maxTtl": 60,
+    "permission":"consume",
+    "egressEnabled":true,
+    "ingressEnabled":true,
+	"respectTtlEnabled": true
+}
+

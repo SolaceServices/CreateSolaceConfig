@@ -1,0 +1,9 @@
+{
+	"clientProfileName":"CHANGEME",
+	"msgVpnName":"CHANGEME",
+
+	"allowGuaranteedEndpointCreateEnabled":true,
+	"allowGuaranteedMsgReceiveEnabled":true,
+	"allowGuaranteedMsgSendEnabled":true
+	
+}

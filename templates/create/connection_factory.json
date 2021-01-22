@@ -1,0 +1,13 @@
+{
+"connectionFactoryName":"CHANGEME",
+"msgVpnName":"CHANGEME",
+
+"allowDuplicateClientIdEnabled": true,
+"dynamicEndpointCreateDurableEnabled": true,
+"messagingDefaultDeliveryMode": "persistent",
+"transportConnectRetryCount":10,
+"transportConnectRetryPerHostCount":3,
+ "transportDirectTransportEnabled": false,
+"transportReconnectRetryCount":10,
+"transportReconnectRetryWait":3000
+}

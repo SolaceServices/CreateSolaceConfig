@@ -1,0 +1,11 @@
+{
+  "aclProfileName":"CHANGEME",
+  "clientProfileName":"CHANGEME",
+  "clientUsername":"CHANGEME",
+  "msgVpnName":"CHANGEME",
+  "password":"CHANGEME",
+
+  "enabled":true,
+  "guaranteedEndpointPermissionOverrideEnabled":false,
+  "subscriptionManagerEnabled":false
+}

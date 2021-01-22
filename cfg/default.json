@@ -1,0 +1,16 @@
+{
+  "vpn" : {
+    "maxConnectionCount": 100,
+    "serviceSmfMaxConnectionCount": 100,
+    "maxEgressFlowCount": 100,
+    "maxIngressFlowCount": 100,
+    "maxMsgSpoolUsage": 1000,
+    "maxTransactedSessionCount": 100
+  },
+
+  "queue" : {
+	"maxDeliveredUnackedMsgsPerFlow": 100,
+	"maxMsgSize": 100000,
+  "maxMsgSpoolUsage":1000
+  }
+}
