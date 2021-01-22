@@ -4,13 +4,13 @@
 
 A simple Solace JSON Config generator based on input files. This file takes the following input files and generate necessary SEMPv2 commpliant JSON files to creating Solace artifacts.
 
-### Input files
+## Input files
 
-#### input-directory
+### Input directory
 
 This directory has a set of CSV files with names and required properties for each artifact. For eg, queue.csv enumerates list of queue-names and required parameters such as access-type, one entry per line. The first entry in the file is the field-name. This should match with the field name in SEMPv2 JSON. 
 
-**Example**
+#### Sample file
 
 ``` CSV
 queueName,accessType
@@ -22,17 +22,17 @@ queue4,non-exclusive
 
 See input/TESTVPN for sample files
 
-#### default file
+### Defaults file
 
 This is a JSON file with site defaults such as spool size for VPN, Queue,etc. See cfg/defaults.json for a sample file.
 
-#### Template JSONs
+### Template JSONs
 
 This is a directory with list of template JSON files to use
 
-### Running
+## Running
 
-Sample Run
+### Sample Run
 
 ``` bash
 
@@ -70,13 +70,120 @@ Creating output dir: output/TESTVPN-default/vpn_config
 
 ```
 
-### Output
+## Output
 
 After successful run, output JSONs will be under output/vpnname-defaults folder.
 
+## Applying 
+
+Optionally, the JSON files can be POSTed to the Solace router with post_semp.sh script.
+
+### Sample Run
+
+
+```  bash
+./post_semp.sh localhost:8080 output/TESTVPN-default/ -------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns -H content-type: application/json -d @output/TESTVPN-default//vpn_config/TESTVPN.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories -H content-type: application/json -d @output/TESTVPN-default//connection_factory_config/cf1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories -H content-type: application/json -d @output/TESTVPN-default//connection_factory_config/cf2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue4.json  ...
+➜  CreateSolaceConfig ./post_semp.sh localhost:8080 output/TESTVPN-default/ 
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns -H content-type: application/json -d @output/TESTVPN-default//vpn_config/TESTVPN.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/aclProfiles -H content-type: application/json -d @output/TESTVPN-default//acl_profile_config/aclprofile3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientProfiles -H content-type: application/json -d @output/TESTVPN-default//client_profile_config/clientprofile3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/clientUsernames -H content-type: application/json -d @output/TESTVPN-default//client_user_config/clientuser3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories -H content-type: application/json -d @output/TESTVPN-default//connection_factory_config/cf1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/jndiConnectionFactories -H content-type: application/json -d @output/TESTVPN-default//connection_factory_config/cf2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue1.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue2.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue3.json  ...
+-------------------------------------------------------------
+POST localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues
+   curl -X POST -u admin:admin localhost:8080/SEMP/v2/config/msgVpns/TESTVPN/queues -H content-type: application/json -d @output/TESTVPN-default//queue_config/queue4.json  ...
+```
+
 ## DISCLAIMER
 
-This is an experimental and prototype implementation. This is **not** a Solace product and not covered by Solace support.
+This is a reference implementation for demo purposes. This is **not** a Solace product and not covered by Solace support.
 
 ## AUTHOR
 
