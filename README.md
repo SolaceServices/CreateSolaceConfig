@@ -4,11 +4,15 @@
 
 A simple Solace JSON Config generator based on input files. This file takes the following input files and generate necessary SEMPv2 commpliant JSON files to creating Solace artifacts.
 
+**Solace**: [Solace PubSub+ Platform](https://docs.solace.com/Solace-PubSub-Platform.htm) is a complete event streaming and management platform for real-time enterprises. PubSub+ helps enterprises design, deploy and manage event-driven architectures across hybrid cloud, multi-cloud and IoT environments.
+
+**SEMPv2**: [SEMPv2] (https://docs.solace.com/API-Developer-Online-Ref-Documentation/swagger-ui/action/index.html) is is a RESTful API for configuring, monitoring, and administering a Solace PubSub+ broker
+
 ## Input files
 
 ### Input directory
 
-This directory has a set of CSV files with names and required properties for each artifact. For eg, queue.csv enumerates list of queue-names and required parameters such as access-type, one entry per line. The first entry in the file is the field-name. This should match with the field name in SEMPv2 JSON. 
+This directory has a set of CSV files with names and required properties for each artifact. For eg, queue.csv enumerates list of queue-names and required parameters such as access-type, one entry per line. The first entry in the file is the field-name. This should match with the field name in SEMPv2 JSON.
 
 #### Sample file
 
@@ -74,12 +78,11 @@ Creating output dir: output/TESTVPN-default/vpn_config
 
 After successful run, output JSONs will be under output/vpnname-defaults folder.
 
-## Applying 
+## Applying
 
 Optionally, the JSON files can be POSTed to the Solace router with post_semp.sh script.
 
 ### Sample Run
-
 
 ```  bash
 ./post_semp.sh localhost:8080 output/TESTVPN-default/ -------------------------------------------------------------
