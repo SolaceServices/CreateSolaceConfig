@@ -3,3 +3,4 @@ queue1,exclusive
 queue2,exclusive
 queue3,non-exclusive
 queue4,non-exclusive
+queue5,non-exclusive

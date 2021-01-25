@@ -11,6 +11,6 @@
   "queue" : {
 	"maxDeliveredUnackedMsgsPerFlow": 100,
 	"maxMsgSize": 100000,
-  "maxMsgSpoolUsage":1000
+  "maxMsgSpoolUsage":1234
   }
 }

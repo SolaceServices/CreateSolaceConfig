@@ -3,16 +3,18 @@
 # Take output of CreateSolaceCfg and create VPN and other objects
 # usage post_semp router-ip:port dir-with-json-files
 # Ramesh Natarajan, Solace PSG
-# Nov 8, 2018
+# Jan 21, 2021 
 
-if [ $# -lt 2 ]; then
+if [ $# -lt 4 ]; then
     echo "Missing arguments. Exiting."
-    echo "Usage: $0 <router-ip>:<port> <dir-with-json-files> [operation]"
+    echo "Usage: $0 <router-ip>:<port> <dir-with-json-files> <username> <password>"
     exit
 fi
 uri=$1
 dir=$2
-restop=${3:-POST}
+user=$3
+pass=$4
+restop=${5:-POST}
 vpn="default"
 
 if [ ! -d $dir ]; then
@@ -39,8 +41,8 @@ do
         [ $sdir == "queue_config" ] && path="$uri/SEMP/v2/config/msgVpns/$vpn/queues"
         echo "-------------------------------------------------------------"
         echo "$restop $path"
-        echo "   curl -X $restop -u admin:admin $path -H "content-type: application/json" -d @${fpath}  ..."
-        curl -X $restop -u admin:admin $path -H "content-type: application/json" -d @${fpath} > tmp/creatre_$file.out 2>&1
+        echo "   curl -X $restop -u ${user}:${pass} $path -H "content-type: application/json" -d @${fpath}  ..."
+        curl -X $restop -u ${user}:${pass} $path -H "content-type: application/json" -d @${fpath} > tmp/creatre_$file.out 2>&1
 
     done
 done
